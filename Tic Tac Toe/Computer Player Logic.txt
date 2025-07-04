@@ -1,0 +1,53 @@
+void CComputerPlayer::makeMove(CBoard& board) {
+    if (m_computerPlayer1) {
+        // Computer is player 1
+
+        // Check for winning move
+        if (board.checkForWinningMove(m_symbol)) {
+            board.placeStone(board.getWinningMove().first, board.getWinningMove().second, m_symbol);
+        }
+        // Check for blocking opponent's winning move
+        else if (board.checkForWinningMove(board.getOpponentSymbol())) {
+            board.placeStone(board.getWinningMove().first, board.getWinningMove().second, m_symbol);
+        }
+        // Make a strategic move
+        else {
+            makeStrategicMove(board);
+        }
+    } else {
+        // Computer is player 2
+
+        // Check for winning move
+        if (board.checkForWinningMove(m_symbol)) {
+            board.placeStone(board.getWinningMove().first, board.getWinningMove().second, m_symbol);
+        }
+        // Check for blocking opponent's winning move
+        else if (board.checkForWinningMove(board.getOpponentSymbol())) {
+            board.placeStone(board.getWinningMove().first, board.getWinningMove().second, m_symbol);
+        }
+        // Make a strategic move
+        else {
+            makeStrategicMove(board);
+        }
+    }
+}
+
+void CComputerPlayer::makeStrategicMove(CBoard& board) {
+    // Add your strategic move logic here
+    // For example, you can prioritize center, corners, and edges
+    // You can also add more complex strategies based on the current state of the board
+
+    // Placeholder: Make a move in the center if available, else in the first available empty position
+    if (!board.checkPosition(1, 1)) {
+        board.placeStone(1, 1, m_symbol);
+    } else {
+        for (int i = 0; i < CBoard::BOARD_SIZE; ++i) {
+            for (int j = 0; j < CBoard::BOARD_SIZE; ++j) {
+                if (!board.checkPosition(i, j)) {
+                    board.placeStone(i, j, m_symbol);
+                    return;
+                }
+            }
+        }
+    }
+}
