@@ -1,37 +1,69 @@
-# Tic-Tac-Toe (C++17, Object-Oriented Design)
+# ❌⭕ Tic-Tac-Toe in Modern C++ (C++17)
 
-A clean, modular implementation of Tic-Tac-Toe using Modern C++ principles.  
-Includes board evaluation logic, a simple AI, and separation of UI/game engine.
+A clean, object-oriented Tic-Tac-Toe game written in Modern C++.
 
-## 💡 Features
-- Object-oriented architecture (Board, Player, GameEngine)
-- Input validation and game state handling
-- Simple CPU opponent (minimax-lite logic)
-- Console-based UI
+This project focuses on **game engine design**, **input validation**, and **modular class architecture**.
 
-## 🛠️ Technical Highlights
-- **RAII-compliant class design**
-- Reinforces **encapsulation**, **state management**, and **clean header/source separation**
-- Safe memory management (no raw pointers)
-- Fully portable (no dependencies)
+---
 
-## 📦 Build Instructions
+## 🚀 Features
 
+- AI vs Player mode
+- Error-free input validation
+- Clear board rendering
+- Fully modular design
+
+---
+
+## 🧩 Architecture Overview
+
+```mermaid
+classDiagram
+    class Game {
+        +start()
+        +checkWin()
+        +switchPlayer()
+    }
+    class Board {
+        +draw()
+        +updateCell()
+    }
+    class Player {
+        +getMove()
+    }
+    Game --> Board
+    Game --> Player
+```
+
+---
+
+## 🛠️ Build Instructions
+
+### Build
+
+```bash
 mkdir build && cd build
 cmake ..
 make
+```
+
+### Run
+
+```bash
 ./tic_tac_toe
+```
 
+---
 
-## 🧪 What This Demonstrates
-- Ability to structure C++ programs cleanly
-- Understanding of OOP design patterns
-- Writing **maintainable, testable C++ code**
+## 💡 What I Learned
 
-## 📈 Future Improvements
-- Full minimax with alpha–beta pruning
-- GUI using Qt or SFML
-- Add unit tests (Catch2)
+- Object-oriented design
+- Encapsulation & clean class responsibilities
+- Separation of UI and logic
 
+---
 
+## 🚧 Future Improvements
 
+- Add Minimax AI
+- Add GUI using SFML
